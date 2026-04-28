@@ -160,22 +160,22 @@ class PassportPhotoProcessor:
 
         # Method 1: Frontal face default
         face = self._try_cascade(self.face_cascade, gray_enhanced, w, h)
-        if face:
+        if face is not None:
             return self._build_face_info(face, w, h)
 
         # Method 2: Frontal face alt2
         face = self._try_cascade(self.face_cascade_alt, gray_enhanced, w, h)
-        if face:
+        if face is not None:
             return self._build_face_info(face, w, h)
 
         # Method 3: Try on original gray (without enhancement)
         face = self._try_cascade(self.face_cascade, gray, w, h)
-        if face:
+        if face is not None:
             return self._build_face_info(face, w, h)
 
         # Method 4: Skin color detection to find face region
         face = self._skin_based_face_region(img_np, w, h)
-        if face:
+        if face is not None:
             return self._build_face_info(face, w, h)
 
         # Method 5: Smart center fallback
@@ -199,8 +199,9 @@ class PassportPhotoProcessor:
                 minSize=(max(min_size, 30), max(min_size, 30)),
             )
             if len(faces) > 0:
-                # Return largest face
-                return sorted(faces, key=lambda f: f[2] * f[3], reverse=True)[0]
+                # Convert to plain Python tuple to avoid numpy truth value issues
+                best = sorted(faces.tolist(), key=lambda f: f[2] * f[3], reverse=True)[0]
+                return tuple(best)
         return None
 
     def _skin_based_face_region(self, img_np, w, h):
