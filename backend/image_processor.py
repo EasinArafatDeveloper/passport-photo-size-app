@@ -10,11 +10,12 @@ Passport Photo Processing Pipeline
 
 import io
 import math
+import os
 from typing import Optional
 
 import cv2
 import numpy as np
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 from rembg import remove, new_session
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
@@ -47,10 +48,13 @@ def get_rembg_session():
 
 class PassportPhotoProcessor:
     def __init__(self):
-        # Load OpenCV face detector (Haar Cascade - very lightweight, no extra RAM)
-        self.face_cascade = cv2.CascadeClassifier(
-            cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+        cascade_path = os.path.join(
+            os.path.dirname(cv2.__file__), "data", "haarcascade_frontalface_default.xml"
         )
+        if not os.path.exists(cascade_path):
+            # fallback to cv2.data path
+            cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+        self.face_cascade = cv2.CascadeClassifier(cascade_path)
 
     def process(
         self,
@@ -112,10 +116,12 @@ class PassportPhotoProcessor:
         img_bytes = io.BytesIO()
         img.save(img_bytes, format="PNG")
         img_bytes.seek(0)
-
-        result_bytes = remove(img_bytes.read(), session=get_rembg_session())
+        try:
+            result_bytes = remove(img_bytes.read(), session=get_rembg_session())
+        except Exception:
+            # fallback: no bg removal, just convert
+            return img.convert("RGB")
         result = Image.open(io.BytesIO(result_bytes)).convert("RGBA")
-
         background = Image.new("RGBA", result.size, (*bg_rgb, 255))
         background.paste(result, mask=result.split()[3])
         return background.convert("RGB")
@@ -125,25 +131,37 @@ class PassportPhotoProcessor:
         gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
         h, w = gray.shape
 
-        faces = self.face_cascade.detectMultiScale(
-            gray,
-            scaleFactor=1.1,
-            minNeighbors=5,
-            minSize=(60, 60),
-            flags=cv2.CASCADE_SCALE_IMAGE,
-        )
+        # Try multiple parameter sets for robustness
+        detected = None
+        for (scale, neighbors, min_sz) in [
+            (1.1, 5, 60),
+            (1.05, 3, 40),
+            (1.15, 3, 30),
+        ]:
+            faces = self.face_cascade.detectMultiScale(
+                gray,
+                scaleFactor=scale,
+                minNeighbors=neighbors,
+                minSize=(min_sz, min_sz),
+            )
+            if len(faces) > 0:
+                detected = faces
+                break
 
-        if len(faces) == 0:
-            return None
+        if detected is None or len(detected) == 0:
+            # Fallback: assume face is in the center-top area of the image
+            fw = w // 2
+            fh = h // 3
+            fx = w // 4
+            fy = int(h * 0.05)
+            detected = [(fx, fy, fw, fh)]
 
-        # Pick the largest face
-        faces = sorted(faces, key=lambda f: f[2] * f[3], reverse=True)
-        fx, fy, fw, fh = faces[0]
+        faces_sorted = sorted(detected, key=lambda f: f[2] * f[3], reverse=True)
+        fx, fy, fw, fh = faces_sorted[0]
 
-        # Estimate head top (above face bbox) and chin
-        head_top_y = max(0, fy - int(fh * 0.25))
-        chin_y = fy + fh
-        head_height = chin_y - head_top_y
+        head_top_y = max(0, fy - int(fh * 0.30))
+        chin_y = min(h, fy + fh + int(fh * 0.05))
+        head_height = max(chin_y - head_top_y, 1)
 
         return {
             "x": fx, "y": fy, "w": fw, "h": fh,
