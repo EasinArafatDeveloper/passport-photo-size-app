@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useCallback, useState } from "react";
 import ConfigStep from "@/components/ConfigStep";
@@ -60,7 +60,7 @@ export default function Home() {
       const res = await fetch(`${API}/process-photo`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: sessionId, copies: config.copies, bg_color: config.bgColor, country_preset: config.countryPreset }),
+        body: JSON.stringify({ session_id: sessionId, copies: parseInt(config.copies, 10) || 6, bg_color: config.bgColor || "white", country_preset: config.countryPreset || "standard" }),
       });
       if (!res.ok) { const err = await res.json(); throw new Error(err.detail || "Processing failed"); }
       const data = await res.json();
