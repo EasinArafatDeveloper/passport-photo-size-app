@@ -15,7 +15,7 @@ from typing import Optional
 
 import cv2
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 from rembg import remove, new_session
 import mediapipe as mp
 from reportlab.lib.pagesizes import A4
@@ -340,19 +340,6 @@ class PassportPhotoProcessor:
 def _fix_exif_rotation(img: Image.Image) -> Image.Image:
     """Fix image rotation from EXIF data (phone camera photos)."""
     try:
-        from PIL import ExifTags
-        exif = img._getexif()
-        if exif is None:
-            return img
-        orientation_key = next(
-            (k for k, v in ExifTags.TAGS.items() if v == "Orientation"), None
-        )
-        if orientation_key is None or orientation_key not in exif:
-            return img
-        orientation = exif[orientation_key]
-        rotations = {3: 180, 6: 270, 8: 90}
-        if orientation in rotations:
-            img = img.rotate(rotations[orientation], expand=True)
+        return ImageOps.exif_transpose(img)
     except Exception:
-        pass
-    return img
+        return img
