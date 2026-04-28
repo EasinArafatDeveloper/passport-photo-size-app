@@ -17,6 +17,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw
 from rembg import remove, new_session
+import mediapipe as mp
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas as rl_canvas
@@ -45,36 +46,10 @@ def get_rembg_session():
     return _rembg_session
 
 
-def _find_cascade_path(filename: str) -> str:
-    """Find Haar Cascade XML file path robustly."""
-    # Try cv2.data first
-    try:
-        p = cv2.data.haarcascades + filename
-        if os.path.exists(p):
-            return p
-    except Exception:
-        pass
-    # Try relative to cv2 package
-    try:
-        p = os.path.join(os.path.dirname(cv2.__file__), "data", filename)
-        if os.path.exists(p):
-            return p
-    except Exception:
-        pass
-    return filename  # let OpenCV handle it
-
-
 class PassportPhotoProcessor:
     def __init__(self):
-        self.face_cascade = cv2.CascadeClassifier(
-            _find_cascade_path("haarcascade_frontalface_default.xml")
-        )
-        self.face_cascade_alt = cv2.CascadeClassifier(
-            _find_cascade_path("haarcascade_frontalface_alt2.xml")
-        )
-        self.profile_cascade = cv2.CascadeClassifier(
-            _find_cascade_path("haarcascade_profileface.xml")
-        )
+        # MediaPipe face detection is highly accurate
+        self.mp_face_detection = mp.solutions.face_detection
 
     def process(
         self,
@@ -147,108 +122,44 @@ class PassportPhotoProcessor:
             return img.convert("RGB")
 
     # ------------------------------------------------------------------
-    # Step 2 – Multi-method face detection
+    # Step 2 – AI Face detection (MediaPipe)
     # ------------------------------------------------------------------
     def _detect_face_robust(self, img: Image.Image) -> dict:
         img_np = np.array(img)
         h, w = img_np.shape[:2]
 
-        # Preprocess: enhance contrast for better detection
-        gray = cv2.cvtColor(img_np, cv2.COLOR_RGB2GRAY)
-        clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
-        gray_enhanced = clahe.apply(gray)
-
-        # Method 1: Frontal face default
-        face = self._try_cascade(self.face_cascade, gray_enhanced, w, h)
-        if face is not None:
-            return self._build_face_info(face, w, h)
-
-        # Method 2: Frontal face alt2
-        face = self._try_cascade(self.face_cascade_alt, gray_enhanced, w, h)
-        if face is not None:
-            return self._build_face_info(face, w, h)
-
-        # Method 3: Try on original gray (without enhancement)
-        face = self._try_cascade(self.face_cascade, gray, w, h)
-        if face is not None:
-            return self._build_face_info(face, w, h)
-
-        # Method 4: Skin color detection to find face region
-        face = self._skin_based_face_region(img_np, w, h)
-        if face is not None:
-            return self._build_face_info(face, w, h)
-
-        # Method 5: Smart center fallback
-        return self._smart_center_fallback(w, h)
-
-    def _try_cascade(self, cascade, gray, w, h):
-        """Try multiple scale/neighbor combos."""
-        if cascade.empty():
-            return None
-        for scale, neighbors, min_pct in [
-            (1.1, 5, 0.08),
-            (1.05, 3, 0.06),
-            (1.15, 4, 0.05),
-            (1.1, 2, 0.04),
-        ]:
-            min_size = int(min(w, h) * min_pct)
-            faces = cascade.detectMultiScale(
-                gray,
-                scaleFactor=scale,
-                minNeighbors=neighbors,
-                minSize=(max(min_size, 30), max(min_size, 30)),
-            )
-            if len(faces) > 0:
-                # Convert to plain Python tuple to avoid numpy truth value issues
-                best = sorted(faces.tolist(), key=lambda f: f[2] * f[3], reverse=True)[0]
-                return tuple(best)
-        return None
-
-    def _skin_based_face_region(self, img_np, w, h):
-        """Find face region using skin color heuristic."""
         try:
-            # Convert to YCrCb for skin detection (works across skin tones)
-            ycrcb = cv2.cvtColor(img_np, cv2.COLOR_RGB2YCrCb)
-            lower = np.array([0, 133, 77], dtype=np.uint8)
-            upper = np.array([255, 173, 127], dtype=np.uint8)
-            skin_mask = cv2.inRange(ycrcb, lower, upper)
+            with self.mp_face_detection.FaceDetection(
+                model_selection=1, min_detection_confidence=0.5
+            ) as face_detection:
+                results = face_detection.process(img_np)
+                if results.detections:
+                    # Find the most prominent face (largest bounding box)
+                    best_detection = max(
+                        results.detections,
+                        key=lambda d: d.location_data.relative_bounding_box.width * d.location_data.relative_bounding_box.height
+                    )
+                    bbox = best_detection.location_data.relative_bounding_box
+                    
+                    # Convert relative bbox to absolute pixels
+                    fx = int(bbox.xmin * w)
+                    fy = int(bbox.ymin * h)
+                    fw = int(bbox.width * w)
+                    fh = int(bbox.height * h)
+                    
+                    # Ensure bbox is within image bounds
+                    fx = max(0, fx)
+                    fy = max(0, fy)
+                    fw = min(w - fx, fw)
+                    fh = min(h - fy, fh)
+                    
+                    if fw > 0 and fh > 0:
+                        return self._build_face_info((fx, fy, fw, fh), w, h)
+        except Exception as e:
+            print(f"MediaPipe error: {e}")
+            pass
 
-            # Morphological cleanup
-            kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (11, 11))
-            skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_CLOSE, kernel)
-            skin_mask = cv2.morphologyEx(skin_mask, cv2.MORPH_OPEN, kernel)
-
-            # Find contours
-            contours, _ = cv2.findContours(skin_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-            if not contours:
-                return None
-
-            # Get contours in upper 70% of image (face should be there)
-            upper_bound = int(h * 0.7)
-            valid = [c for c in contours if cv2.boundingRect(c)[1] < upper_bound
-                     and cv2.contourArea(c) > (w * h * 0.02)]
-
-            if not valid:
-                valid = contours
-
-            # Pick largest skin region
-            largest = max(valid, key=cv2.contourArea)
-            fx, fy, fw, fh = cv2.boundingRect(largest)
-
-            # Validate: face-like aspect ratio (between 0.5 and 2.5)
-            if fw == 0 or fh == 0:
-                return None
-            ratio = fh / fw
-            if ratio < 0.4 or ratio > 3.0:
-                return None
-
-            # Face must be at least 8% of image in each dimension
-            if fw < w * 0.08 or fh < h * 0.08:
-                return None
-
-            return (fx, fy, fw, fh)
-        except Exception:
-            return None
+        # Smart center fallback if face detection fails completely
 
     def _smart_center_fallback(self, w, h) -> dict:
         """
