@@ -102,14 +102,27 @@ export default function Home() {
           overflow: hidden;
         }
         .hero-content {
-          max-width: 760px;
+          max-width: 1200px;
           width: 100%;
-          display: flex;
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
           align-items: center;
-          gap: 28px;
+          gap: 60px;
           position: relative;
           z-index: 2;
+        }
+        .hero-text-content {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          gap: 28px;
+        }
+        .hero-image-content {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
         }
         .hero-badge {
           display: inline-flex;
@@ -117,19 +130,19 @@ export default function Home() {
           gap: 8px;
           padding: 8px 18px;
           background: white;
-          border: 1px solid rgba(15,118,110,0.15);
+          border: 1px solid rgba(37,99,235,0.15);
           border-radius: 999px;
           font-size: 12px;
           font-weight: 700;
-          color: #0f766e;
+          color: #2563eb;
           letter-spacing: 0.06em;
           text-transform: uppercase;
-          box-shadow: 0 2px 12px rgba(15,118,110,0.1);
+          box-shadow: 0 2px 12px rgba(37,99,235,0.1);
         }
         .hero-badge-dot {
           width: 7px; height: 7px;
           border-radius: 50%;
-          background: #10b981;
+          background: #3b82f6;
           animation: pulse-dot 2s ease-in-out infinite;
         }
         @keyframes pulse-dot {
@@ -145,7 +158,7 @@ export default function Home() {
           color: #0f172a;
         }
         .hero-title span {
-          color: #0f766e;
+          color: #2563eb;
         }
         .hero-subtitle {
           font-size: 1.125rem;
@@ -158,14 +171,14 @@ export default function Home() {
           display: flex;
           gap: 12px;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: flex-start;
         }
         .hero-btn-main {
           display: inline-flex;
           align-items: center;
           gap: 8px;
           padding: 14px 32px;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           font-size: 15px;
           font-weight: 700;
@@ -173,12 +186,12 @@ export default function Home() {
           border-radius: 999px;
           cursor: pointer;
           transition: all 0.2s;
-          box-shadow: 0 6px 24px rgba(15,118,110,0.3);
+          box-shadow: 0 6px 24px rgba(37,99,235,0.3);
         }
         .hero-btn-main:hover {
-          background: #0d5c56;
+          background: #1d4ed8;
           transform: translateY(-2px);
-          box-shadow: 0 12px 32px rgba(15,118,110,0.35);
+          box-shadow: 0 12px 32px rgba(37,99,235,0.35);
         }
         .hero-btn-sec {
           display: inline-flex;
@@ -228,10 +241,27 @@ export default function Home() {
           z-index: 0;
           opacity: 0.5;
         }
-        .hero-blob-1 { width: 500px; height: 500px; top: -150px; left: -100px; background: rgba(15,118,110,0.12); }
+        .hero-blob-1 { width: 500px; height: 500px; top: -150px; left: -100px; background: rgba(37,99,235,0.12); }
         .hero-blob-2 { width: 400px; height: 400px; top: -50px; right: -100px; background: rgba(251,146,60,0.1); }
 
-        /* â”€â”€ Features â”€â”€ */
+        .hero-preview-wrapper {
+          width: 100%;
+          max-width: 600px;
+          border-radius: 24px;
+          overflow: hidden;
+          box-shadow: 0 24px 50px rgba(0,0,0,0.12);
+          border: 6px solid white;
+          background: #fff;
+          position: relative;
+          z-index: 10;
+        }
+        .hero-preview-img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        /* ── Features ── */
         .section { padding: 80px 24px; }
         .section-center { text-align: center; margin-bottom: 56px; }
         .section-eyebrow {
@@ -239,7 +269,7 @@ export default function Home() {
           font-weight: 800;
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: #0f766e;
+          color: #2563eb;
           margin-bottom: 12px;
         }
         .section-title {
@@ -253,7 +283,7 @@ export default function Home() {
           display: grid;
           gap: 20px;
           grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-          max-width: 1100px;
+          max-width: 1200px;
           margin: 0 auto;
         }
         .feature-card {
@@ -267,12 +297,12 @@ export default function Home() {
         .feature-card:hover {
           transform: translateY(-4px);
           box-shadow: 0 16px 40px rgba(0,0,0,0.08);
-          border-color: rgba(15,118,110,0.2);
+          border-color: rgba(37,99,235,0.2);
         }
         .feature-icon {
           width: 52px; height: 52px;
           border-radius: 16px;
-          background: #f0fdf9;
+          background: #eff6ff;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -290,7 +320,7 @@ export default function Home() {
           display: grid;
           gap: 40px;
           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          max-width: 900px;
+          max-width: 1000px;
           margin: 0 auto;
           position: relative;
         }
@@ -315,13 +345,13 @@ export default function Home() {
         .step-circle {
           width: 72px; height: 72px;
           border-radius: 50%;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;
-          box-shadow: 0 8px 24px rgba(15,118,110,0.3);
+          box-shadow: 0 8px 24px rgba(37,99,235,0.3);
           transition: transform 0.3s;
           border: 4px solid white;
         }
@@ -342,8 +372,10 @@ export default function Home() {
         }
         .step-item h4 { font-size: 16px; font-weight: 800; color: #0f172a; }
 
-        /* â”€â”€ Workflow â”€â”€ */
+        /* ── Workflow ── */
         .workflow-section {
+          max-width: 1200px;
+          margin: 0 auto;
           padding: 40px 24px 100px;
           scroll-margin-top: 100px;
         }
@@ -363,7 +395,7 @@ export default function Home() {
           padding: 60px 24px;
         }
         .footer-inner {
-          max-width: 1100px;
+          max-width: 1200px;
           margin: 0 auto;
           display: flex;
           flex-wrap: wrap;
@@ -409,7 +441,7 @@ export default function Home() {
           color: #94a3b8;
           transition: color 0.2s;
         }
-        .footer-links a:hover { color: #0f766e; }
+        .footer-links a:hover { color: #2563eb; }
         .footer-badge {
           display: flex;
           align-items: center;
@@ -426,6 +458,9 @@ export default function Home() {
         }
         @media (max-width: 768px) {
           .hero { padding: 60px 16px 80px; }
+          .hero-content { grid-template-columns: 1fr; gap: 40px; }
+          .hero-text-content { align-items: center; text-align: center; }
+          .hero-buttons { justify-content: center; }
           .hero-title { font-size: 2.2rem; }
           .hero-buttons { flex-direction: column; width: 100%; }
           .hero-btn-main, .hero-btn-sec { width: 100%; justify-content: center; }
@@ -435,6 +470,7 @@ export default function Home() {
           .workflow-header { padding: 20px 16px; }
           .footer { padding: 40px 16px; }
           .footer-inner { flex-direction: column; text-align: center; gap: 24px; }
+          .hero-preview-wrapper { margin-top: 0px; border-width: 3px; border-radius: 16px; }
         }
       `}</style>
 
@@ -448,45 +484,53 @@ export default function Home() {
             <div className="hero-blob hero-blob-1" />
             <div className="hero-blob hero-blob-2" />
             <div className="hero-content">
-              <div className="hero-badge">
-                <div className="hero-badge-dot" />
-                AI-Powered Precision
-              </div>
-
-              <h1 className="hero-title">
-                Create Passport Photos<br />
-                <span>in Seconds</span>
-              </h1>
-
-              <p className="hero-subtitle">
-                Professional, biometric-compliant passport photos from your smartphone. Auto background removal, face alignment & instant PDF download.
-              </p>
-
-              <div className="hero-buttons">
-                <button
-                  className="hero-btn-main"
-                  onClick={() => document.getElementById("workflow-section")?.scrollIntoView({ behavior: "smooth" })}
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="3" y2="15"/>
-                  </svg>
-                  Upload Photo Now
-                </button>
-                <button className="hero-btn-sec">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="5 3 19 12 5 21 5 3"/>
-                  </svg>
-                  Watch Demo
-                </button>
-              </div>
-
-              <div className="hero-trust">
-                <div className="hero-avatars">
-                  <img src="https://i.pravatar.cc/100?img=1" alt="user" />
-                  <img src="https://i.pravatar.cc/100?img=11" alt="user" />
-                  <img src="https://i.pravatar.cc/100?img=5" alt="user" />
+              <div className="hero-text-content">
+                <div className="hero-badge">
+                  <div className="hero-badge-dot" />
+                  AI-Powered Precision
                 </div>
-                <span>Used by <strong style={{color:'#0f172a'}}>50,000+</strong> travelers this month</span>
+
+                <h1 className="hero-title">
+                  Create Passport Photos<br />
+                  <span>in Seconds</span>
+                </h1>
+
+                <p className="hero-subtitle">
+                  Professional, biometric-compliant passport photos from your smartphone. Auto background removal, face alignment & instant PDF download.
+                </p>
+
+                <div className="hero-buttons">
+                  <button
+                    className="hero-btn-main"
+                    onClick={() => document.getElementById("workflow-section")?.scrollIntoView({ behavior: "smooth" })}
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="3" y2="15"/>
+                    </svg>
+                    Upload Photo Now
+                  </button>
+                  <button className="hero-btn-sec">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                    Watch Demo
+                  </button>
+                </div>
+
+                <div className="hero-trust">
+                  <div className="hero-avatars">
+                    <img src="https://i.pravatar.cc/100?img=1" alt="user" />
+                    <img src="https://i.pravatar.cc/100?img=11" alt="user" />
+                    <img src="https://i.pravatar.cc/100?img=5" alt="user" />
+                  </div>
+                  <span>Used by <strong style={{color:'#0f172a'}}>50,000+</strong> travelers this month</span>
+                </div>
+              </div>
+
+              <div className="hero-image-content">
+                <div className="hero-preview-wrapper">
+                  <img src="/preview.png" alt="Passport Photo Comparison - Before and After" className="hero-preview-img" />
+                </div>
               </div>
             </div>
           </section>
@@ -578,10 +622,15 @@ export default function Home() {
           <div className="footer-inner">
             <div>
               <div className="footer-brand">
-                <div className="footer-logo">PM</div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36">
+                  <rect width="64" height="64" rx="12" fill="#2563eb"/>
+                  <rect x="16" y="14" width="32" height="36" rx="4" fill="white"/>
+                  <circle cx="32" cy="28" r="6" fill="#2563eb"/>
+                  <rect x="24" y="36" width="16" height="6" rx="3" fill="#2563eb"/>
+                </svg>
                 <div>
-                  <div className="footer-brand-name">PassportAI</div>
-                  <div className="footer-copy">&copy; {new Date().getFullYear()} Passport Photo Maker</div>
+                  <div className="footer-brand-name">Passportify</div>
+                  <div className="footer-copy">&copy; {new Date().getFullYear()} Passportify</div>
                 </div>
               </div>
             </div>

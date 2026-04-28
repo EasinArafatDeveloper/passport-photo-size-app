@@ -45,7 +45,7 @@ export default function Header() {
           width: 42px;
           height: 42px;
           border-radius: 14px;
-          background: linear-gradient(135deg, #0f766e, #0d9488);
+          background: linear-gradient(135deg, #2563eb, #3b82f6);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -53,7 +53,7 @@ export default function Header() {
           font-weight: 800;
           font-size: 14px;
           letter-spacing: 0.5px;
-          box-shadow: 0 6px 20px rgba(15,118,110,0.35);
+          box-shadow: 0 6px 20px rgba(37,99,235,0.35);
         }
         .nav-logo-text {
           font-size: 20px;
@@ -75,7 +75,7 @@ export default function Header() {
           transition: color 0.2s;
         }
         .nav-links a:hover {
-          color: #0f766e;
+          color: #2563eb;
         }
         .nav-actions {
           display: flex;
@@ -112,8 +112,8 @@ export default function Header() {
           transition: all 0.2s;
         }
         .nav-cta:hover {
-          background: #0f766e;
-          box-shadow: 0 8px 24px rgba(15,118,110,0.3);
+          background: #2563eb;
+          box-shadow: 0 8px 24px rgba(37,99,235,0.3);
           transform: translateY(-1px);
         }
         .nav-hamburger {
@@ -160,8 +160,8 @@ export default function Header() {
           transition: background 0.2s, color 0.2s;
         }
         .mobile-menu a:hover {
-          background: #f0fdfa;
-          color: #0f766e;
+          background: #eff6ff;
+          color: #2563eb;
         }
         .mobile-menu-cta {
           margin-top: 8px;
@@ -169,7 +169,7 @@ export default function Header() {
           font-size: 15px;
           font-weight: 700;
           color: white;
-          background: #0f766e;
+          background: #2563eb;
           border: none;
           cursor: pointer;
           border-radius: 14px;
@@ -177,7 +177,7 @@ export default function Header() {
           transition: background 0.2s;
         }
         .mobile-menu-cta:hover {
-          background: #0d9488;
+          background: #3b82f6;
         }
         @media (max-width: 768px) {
           .nav-links { display: none; }
@@ -192,8 +192,13 @@ export default function Header() {
         <div className="nav-inner">
           {/* Logo */}
           <a href="/" className="nav-logo">
-            <div className="nav-logo-icon">PM</div>
-            <span className="nav-logo-text">PassportAI</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32">
+              <rect width="64" height="64" rx="12" fill="#2563eb"/>
+              <rect x="16" y="14" width="32" height="36" rx="4" fill="white"/>
+              <circle cx="32" cy="28" r="6" fill="#2563eb"/>
+              <rect x="24" y="36" width="16" height="6" rx="3" fill="#2563eb"/>
+            </svg>
+            <span className="nav-logo-text">Passportify</span>
           </a>
 
           {/* Desktop Nav Links */}

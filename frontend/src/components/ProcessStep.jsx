@@ -43,7 +43,7 @@ export default function ProcessStep({ progress }) {
         .proc-left {
           padding: 44px 36px;
           border-right: 1px solid #e2e8f0;
-          background: linear-gradient(160deg, rgba(15,118,110,0.06) 0%, rgba(255,255,255,0) 70%);
+          background: linear-gradient(160deg, rgba(37,99,235,0.06) 0%, rgba(255,255,255,0) 70%);
           display: flex;
           flex-direction: column;
           gap: 28px;
@@ -54,8 +54,8 @@ export default function ProcessStep({ progress }) {
           gap: 7px;
           padding: 6px 14px;
           border-radius: 999px;
-          background: #ccfbf1;
-          color: #0f766e;
+          background: #dbeafe;
+          color: #2563eb;
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.08em;
@@ -65,7 +65,7 @@ export default function ProcessStep({ progress }) {
         .proc-dot-pulse {
           width: 7px; height: 7px;
           border-radius: 50%;
-          background: #10b981;
+          background: #3b82f6;
           animation: proc-pulse 1.4s ease-in-out infinite;
         }
         @keyframes proc-pulse {
@@ -103,7 +103,7 @@ export default function ProcessStep({ progress }) {
           width: 72px; height: 72px;
           border-radius: 50%;
           border: 4px solid #e2e8f0;
-          border-top-color: #0f766e;
+          border-top-color: #2563eb;
           animation: proc-spin 0.9s linear infinite;
         }
         @keyframes proc-spin { to { transform: rotate(360deg); } }
@@ -112,7 +112,7 @@ export default function ProcessStep({ progress }) {
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          color: #0f766e;
+          color: #2563eb;
         }
         .proc-stage-name {
           font-size: 17px;
@@ -141,7 +141,7 @@ export default function ProcessStep({ progress }) {
           font-weight: 700;
           color: #475569;
         }
-        .proc-progress-pct { color: #0f766e; }
+        .proc-progress-pct { color: #2563eb; }
         .proc-track {
           height: 8px;
           border-radius: 999px;
@@ -151,7 +151,7 @@ export default function ProcessStep({ progress }) {
         .proc-fill {
           height: 100%;
           border-radius: 999px;
-          background: linear-gradient(90deg, #0f766e, #10b981);
+          background: linear-gradient(90deg, #2563eb, #3b82f6);
           transition: width 0.55s ease;
         }
 
@@ -188,13 +188,13 @@ export default function ProcessStep({ progress }) {
           transition: all 0.3s ease;
         }
         .proc-stage-row.active {
-          border-color: #0f766e;
-          background: #f0fdf9;
-          box-shadow: 0 4px 14px rgba(15,118,110,0.12);
+          border-color: #2563eb;
+          background: #eff6ff;
+          box-shadow: 0 4px 14px rgba(37,99,235,0.12);
         }
         .proc-stage-row.done {
-          border-color: #d1fae5;
-          background: #f0fdf9;
+          border-color: #dbeafe;
+          background: #eff6ff;
         }
 
         /* Stage number badge */
@@ -213,13 +213,13 @@ export default function ProcessStep({ progress }) {
           transition: all 0.3s;
         }
         .proc-badge.active {
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           border-color: transparent;
-          box-shadow: 0 4px 12px rgba(15,118,110,0.3);
+          box-shadow: 0 4px 12px rgba(37,99,235,0.3);
         }
         .proc-badge.done {
-          background: #d1fae5;
+          background: #dbeafe;
           color: #059669;
           border-color: transparent;
         }

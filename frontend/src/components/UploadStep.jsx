@@ -66,8 +66,8 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           gap: 6px;
           padding: 6px 14px;
           border-radius: 999px;
-          background: #ccfbf1;
-          color: #0f766e;
+          background: #dbeafe;
+          color: #2563eb;
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.08em;
@@ -82,7 +82,7 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           letter-spacing: -0.025em;
           margin-top: 12px;
         }
-        .upload-heading span { color: #0f766e; }
+        .upload-heading span { color: #2563eb; }
         .upload-desc {
           font-size: 15px;
           color: #64748b;
@@ -110,7 +110,7 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           justify-content: center;
           flex-shrink: 0;
         }
-        .upload-feature-icon.teal { background: #f0fdf9; color: #0f766e; }
+        .upload-feature-icon.teal { background: #eff6ff; color: #2563eb; }
         .upload-feature-icon.orange { background: #fff7ed; color: #ea580c; }
         .upload-feature h4 {
           font-size: 14px;
@@ -155,8 +155,8 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
         .check-icon {
           width: 18px; height: 18px;
           border-radius: 50%;
-          background: #f0fdf9;
-          color: #10b981;
+          background: #eff6ff;
+          color: #3b82f6;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -208,7 +208,7 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
         /* UPLOAD ZONE */
         .upload-dropzone {
           flex: 1;
-          border: 2px dashed rgba(15,118,110,0.25);
+          border: 2px dashed rgba(37,99,235,0.25);
           border-radius: 20px;
           background: rgba(248,250,252,0.6);
           display: flex;
@@ -222,20 +222,20 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           min-height: 280px;
         }
         .upload-dropzone:hover {
-          border-color: #0f766e;
+          border-color: #2563eb;
           background: rgba(240,253,250,0.8);
           transform: translateY(-2px);
         }
         .upload-dropzone.drag-over {
-          border-color: #0f766e;
-          background: #f0fdf9;
+          border-color: #2563eb;
+          background: #eff6ff;
           transform: scale(0.99);
         }
         .dropzone-icon {
           width: 72px; height: 72px;
           border-radius: 20px;
-          background: #f0fdf9;
-          color: #0f766e;
+          background: #eff6ff;
+          color: #2563eb;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -248,7 +248,7 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           position: absolute;
           inset: 0;
           border-radius: 20px;
-          background: #0f766e;
+          background: #2563eb;
           opacity: 0.15;
           animation: ping 1s ease-out infinite;
         }
@@ -281,7 +281,7 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           align-items: center;
           gap: 8px;
           padding: 11px 24px;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           font-size: 14px;
           font-weight: 700;
@@ -289,9 +289,9 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           border-radius: 12px;
           cursor: pointer;
           transition: all 0.2s;
-          box-shadow: 0 4px 14px rgba(15,118,110,0.3);
+          box-shadow: 0 4px 14px rgba(37,99,235,0.3);
         }
-        .dz-btn-main:hover { background: #0d5c56; transform: translateY(-1px); }
+        .dz-btn-main:hover { background: #1d4ed8; transform: translateY(-1px); }
         .dz-btn-main:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .dz-btn-sec {
           display: inline-flex;
@@ -323,7 +323,7 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
           justify-content: space-between;
           font-size: 12px;
           font-weight: 700;
-          color: #0f766e;
+          color: #2563eb;
           text-transform: uppercase;
           letter-spacing: 0.06em;
         }
@@ -335,7 +335,7 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
         }
         .progress-bar {
           height: 100%;
-          background: linear-gradient(90deg, #0f766e, #10b981);
+          background: linear-gradient(90deg, #2563eb, #3b82f6);
           border-radius: 999px;
           transition: width 0.5s ease;
         }

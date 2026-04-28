@@ -45,7 +45,7 @@ export default function Toast({ type, message }) {
           flex-shrink: 0;
           font-size: 16px;
         }
-        .toast-icon.success { background: rgba(16,185,129,0.2); color: #10b981; }
+        .toast-icon.success { background: rgba(59,130,246,0.2); color: #3b82f6; }
         .toast-icon.error   { background: rgba(239,68,68,0.2);  color: #ef4444; }
         .toast-label { font-weight: 700; margin-bottom: 2px; }
         .toast-msg   { font-weight: 500; color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.4; }

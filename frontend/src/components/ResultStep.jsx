@@ -84,8 +84,8 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           gap: 7px;
           padding: 6px 14px;
           border-radius: 999px;
-          background: #d1fae5;
-          color: #065f46;
+          background: #dbeafe;
+          color: #1e3a8a;
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.07em;
@@ -96,7 +96,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
         .result-check-circle {
           width: 18px; height: 18px;
           border-radius: 50%;
-          background: #10b981;
+          background: #3b82f6;
           color: white;
           display: flex;
           align-items: center;
@@ -112,7 +112,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           line-height: 1.25;
           letter-spacing: -0.02em;
         }
-        .result-title span { color: #0f766e; }
+        .result-title span { color: #2563eb; }
         .result-desc {
           font-size: 14px;
           color: #64748b;
@@ -122,7 +122,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           max-width: 380px;
         }
         .result-dpi-badge {
-          background: #f0fdf9;
+          background: #eff6ff;
           border: 1px solid #a7f3d0;
           border-radius: 14px;
           padding: 12px 18px;
@@ -134,12 +134,12 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: #0f766e;
+          color: #2563eb;
         }
         .result-dpi-value {
           font-size: 20px;
           font-weight: 800;
-          color: #065f46;
+          color: #1e3a8a;
           margin-top: 2px;
         }
 
@@ -230,7 +230,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           display: inline-flex;
           align-items: center;
           padding: 7px 14px;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           font-size: 10px;
           font-weight: 800;
@@ -257,7 +257,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           gap: 10px;
           width: 100%;
           padding: 15px;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           font-size: 15px;
           font-weight: 700;
@@ -265,12 +265,12 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           border-radius: 14px;
           cursor: pointer;
           transition: all 0.2s;
-          box-shadow: 0 6px 20px rgba(15,118,110,0.3);
+          box-shadow: 0 6px 20px rgba(37,99,235,0.3);
         }
         .result-btn-download:hover {
-          background: #0d5c56;
+          background: #1d4ed8;
           transform: translateY(-2px);
-          box-shadow: 0 10px 28px rgba(15,118,110,0.35);
+          box-shadow: 0 10px 28px rgba(37,99,235,0.35);
         }
         .result-btn-download:disabled {
           opacity: 0.7;
@@ -314,7 +314,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          color: #0f766e;
+          color: #2563eb;
           margin-bottom: 16px;
         }
         .result-tips-list {
@@ -334,8 +334,8 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
         .result-tip-num {
           width: 26px; height: 26px;
           border-radius: 8px;
-          background: #ccfbf1;
-          color: #0f766e;
+          background: #dbeafe;
+          color: #2563eb;
           font-size: 11px;
           font-weight: 800;
           display: flex;

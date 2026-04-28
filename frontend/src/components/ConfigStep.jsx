@@ -53,8 +53,8 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
           gap: 6px;
           padding: 6px 14px;
           border-radius: 999px;
-          background: #ccfbf1;
-          color: #0f766e;
+          background: #dbeafe;
+          color: #2563eb;
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.08em;
@@ -68,7 +68,7 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
           line-height: 1.25;
           letter-spacing: -0.02em;
         }
-        .cfg-heading span { color: #0f766e; }
+        .cfg-heading span { color: #2563eb; }
         .cfg-desc {
           font-size: 14px;
           color: #64748b;
@@ -144,7 +144,7 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
         }
         .cfg-step-badge {
           padding: 8px 16px;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           font-size: 11px;
           font-weight: 800;
@@ -186,13 +186,13 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
           gap: 4px;
         }
         .preset-card:hover {
-          border-color: rgba(15,118,110,0.4);
-          box-shadow: 0 4px 12px rgba(15,118,110,0.1);
+          border-color: rgba(37,99,235,0.4);
+          box-shadow: 0 4px 12px rgba(37,99,235,0.1);
         }
         .preset-card.active {
-          border-color: #0f766e;
-          background: #f0fdf9;
-          box-shadow: 0 4px 16px rgba(15,118,110,0.15);
+          border-color: #2563eb;
+          background: #eff6ff;
+          box-shadow: 0 4px 16px rgba(37,99,235,0.15);
         }
         .preset-card-top {
           display: flex;
@@ -207,7 +207,7 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
         .preset-check {
           width: 18px; height: 18px;
           border-radius: 50%;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           display: flex;
           align-items: center;
@@ -219,7 +219,7 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
         .preset-size {
           font-size: 11px;
           font-weight: 800;
-          color: #0f766e;
+          color: #2563eb;
           text-transform: uppercase;
           letter-spacing: 0.04em;
         }
@@ -261,7 +261,7 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
           letter-spacing: 0.04em;
         }
         .bg-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .bg-btn.active { border-color: #0f766e; box-shadow: 0 0 0 3px rgba(15,118,110,0.15); }
+        .bg-btn.active { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
 
         /* Copy count buttons */
         .copy-btns {
@@ -280,12 +280,12 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
           color: #94a3b8;
           transition: all 0.2s;
         }
-        .copy-btn:hover { border-color: rgba(15,118,110,0.4); color: #0f766e; }
+        .copy-btn:hover { border-color: rgba(37,99,235,0.4); color: #2563eb; }
         .copy-btn.active {
-          border-color: #0f766e;
-          background: #f0fdf9;
-          color: #0f766e;
-          box-shadow: 0 0 0 3px rgba(15,118,110,0.1);
+          border-color: #2563eb;
+          background: #eff6ff;
+          color: #2563eb;
+          box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
 
         /* Action buttons */
@@ -310,7 +310,7 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
         .cfg-btn-generate {
           flex: 2;
           padding: 14px;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           font-size: 14px;
           font-weight: 700;
@@ -318,16 +318,16 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
           border-radius: 14px;
           cursor: pointer;
           transition: all 0.2s;
-          box-shadow: 0 4px 16px rgba(15,118,110,0.3);
+          box-shadow: 0 4px 16px rgba(37,99,235,0.3);
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
         }
         .cfg-btn-generate:hover {
-          background: #0d5c56;
+          background: #1d4ed8;
           transform: translateY(-1px);
-          box-shadow: 0 8px 24px rgba(15,118,110,0.35);
+          box-shadow: 0 8px 24px rgba(37,99,235,0.35);
         }
 
         /* Info notice */

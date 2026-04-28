@@ -1,7 +1,16 @@
-"use client";
-
 import Header from "@/components/Header";
 import Link from "next/link";
+
+export const metadata = {
+  title: "About Easin Arafat | Developer of Passportify",
+  description: "Learn more about Easin Arafat, a full-stack developer and AI enthusiast from Bangladesh, and the creator of Passportify.",
+  keywords: "Easin Arafat, Easin Arafat Developer, Full-stack developer Bangladesh, Passportify creator, React NextJS Developer Dhaka",
+  openGraph: {
+    title: "About Easin Arafat | Developer of Passportify",
+    description: "Full-stack developer from Bangladesh building AI-powered tools.",
+    url: "https://passport-size-photo-generate.scaleupweb.xyz/about",
+  }
+};
 
 const SKILLS = [
   { name: 'Next.js', color: '#000000' },
@@ -9,7 +18,7 @@ const SKILLS = [
   { name: 'Python', color: '#3776AB' },
   { name: 'FastAPI', color: '#009688' },
   { name: 'AI / ML', color: '#FF6F00' },
-  { name: 'rembg', color: '#10b981' },
+  { name: 'rembg', color: '#3b82f6' },
   { name: 'OpenCV', color: '#5C3EE8' },
   { name: 'MediaPipe', color: '#00BCD4' },
   { name: 'REST API', color: '#e11d48' },
@@ -20,7 +29,7 @@ const SKILLS = [
 const TIMELINE = [
   {
     date: 'April 2026',
-    title: 'PassportAI Launched 🚀',
+    title: 'Passportify Launched 🚀',
     desc: 'Full-stack AI passport photo generator built with Next.js frontend and Python FastAPI backend.',
   },
   {
@@ -79,9 +88,9 @@ export default function AboutPage() {
           gap: 7px;
           padding: 7px 16px;
           border-radius: 999px;
-          background: rgba(16,185,129,0.15);
-          border: 1px solid rgba(16,185,129,0.3);
-          color: #10b981;
+          background: rgba(59,130,246,0.15);
+          border: 1px solid rgba(59,130,246,0.3);
+          color: #3b82f6;
           font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.08em;
@@ -90,7 +99,7 @@ export default function AboutPage() {
         .about-avail-dot {
           width: 7px; height: 7px;
           border-radius: 50%;
-          background: #10b981;
+          background: #3b82f6;
           animation: avail-pulse 1.5s ease-in-out infinite;
         }
         @keyframes avail-pulse {
@@ -104,7 +113,7 @@ export default function AboutPage() {
           letter-spacing: -0.03em;
           line-height: 1.12;
         }
-        .about-hero h1 span { color: #10b981; }
+        .about-hero h1 span { color: #3b82f6; }
         .about-hero-sub {
           font-size: 16px;
           color: rgba(255,255,255,0.55);
@@ -169,8 +178,8 @@ export default function AboutPage() {
           width: 120px; height: 120px;
           border-radius: 50%;
           padding: 3px;
-          background: linear-gradient(135deg, #0f766e, #10b981);
-          box-shadow: 0 0 28px rgba(15,118,110,0.3);
+          background: linear-gradient(135deg, #2563eb, #3b82f6);
+          box-shadow: 0 0 28px rgba(37,99,235,0.3);
         }
         .avatar-img {
           width: 100%; height: 100%;
@@ -206,12 +215,12 @@ export default function AboutPage() {
           align-items: center;
           gap: 6px;
           padding: 6px 14px;
-          background: #f0fdf9;
+          background: #eff6ff;
           border: 1px solid #a7f3d0;
           border-radius: 999px;
           font-size: 11px;
           font-weight: 700;
-          color: #065f46;
+          color: #1e3a8a;
         }
 
         /* Contact card */
@@ -248,9 +257,9 @@ export default function AboutPage() {
           background: #f8fafc;
         }
         .contact-link:hover {
-          background: #f0fdf9;
-          border-color: rgba(15,118,110,0.3);
-          color: #0f766e;
+          background: #eff6ff;
+          border-color: rgba(37,99,235,0.3);
+          color: #2563eb;
           transform: translateX(3px);
         }
         .contact-icon {
@@ -282,7 +291,7 @@ export default function AboutPage() {
           font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 0.1em;
-          color: #0f766e;
+          color: #2563eb;
           margin-bottom: 12px;
         }
         .about-section-title {
@@ -299,7 +308,7 @@ export default function AboutPage() {
           font-weight: 400;
         }
         .about-bio-text strong { color: #0f172a; font-weight: 700; }
-        .about-bio-text span { color: #0f766e; font-weight: 700; }
+        .about-bio-text span { color: #2563eb; font-weight: 700; }
 
         /* Stats row */
         .about-stats-row {
@@ -354,11 +363,11 @@ export default function AboutPage() {
           cursor: default;
         }
         .skill-pill:hover {
-          background: #f0fdf9;
-          border-color: rgba(15,118,110,0.3);
-          color: #0f766e;
+          background: #eff6ff;
+          border-color: rgba(37,99,235,0.3);
+          color: #2563eb;
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(15,118,110,0.1);
+          box-shadow: 0 4px 12px rgba(37,99,235,0.1);
         }
         .skill-dot {
           width: 8px; height: 8px;
@@ -391,9 +400,9 @@ export default function AboutPage() {
         .timeline-dot {
           width: 14px; height: 14px;
           border-radius: 50%;
-          background: #0f766e;
+          background: #2563eb;
           border: 2px solid white;
-          box-shadow: 0 0 0 3px rgba(15,118,110,0.2);
+          box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
           flex-shrink: 0;
           margin-top: 4px;
         }
@@ -407,7 +416,7 @@ export default function AboutPage() {
         .timeline-date {
           font-size: 11px;
           font-weight: 800;
-          color: #0f766e;
+          color: #2563eb;
           text-transform: uppercase;
           letter-spacing: 0.06em;
           margin-bottom: 4px;
@@ -440,7 +449,7 @@ export default function AboutPage() {
           position: absolute;
           width: 300px; height: 300px;
           border-radius: 50%;
-          background: rgba(15,118,110,0.2);
+          background: rgba(37,99,235,0.2);
           filter: blur(60px);
           top: -80px; right: -60px;
           pointer-events: none;
@@ -473,7 +482,7 @@ export default function AboutPage() {
           align-items: center;
           gap: 8px;
           padding: 12px 24px;
-          background: #0f766e;
+          background: #2563eb;
           color: white;
           font-size: 14px;
           font-weight: 700;
@@ -481,13 +490,13 @@ export default function AboutPage() {
           border-radius: 12px;
           text-decoration: none;
           transition: all 0.2s;
-          box-shadow: 0 4px 16px rgba(15,118,110,0.4);
+          box-shadow: 0 4px 16px rgba(37,99,235,0.4);
           cursor: pointer;
         }
         .cta-btn-primary:hover {
-          background: #0d9488;
+          background: #3b82f6;
           transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(15,118,110,0.5);
+          box-shadow: 0 8px 24px rgba(37,99,235,0.5);
         }
         .cta-btn-ghost {
           display: inline-flex;
@@ -515,8 +524,8 @@ export default function AboutPage() {
 
         {/* ── HERO ── */}
         <section className="about-hero">
-          <div className="about-hero-blob" style={{ width: 400, height: 400, top: -100, right: -100, background: 'rgba(15,118,110,0.15)' }} />
-          <div className="about-hero-blob" style={{ width: 300, height: 300, bottom: -80, left: '5%', background: 'rgba(16,185,129,0.08)' }} />
+          <div className="about-hero-blob" style={{ width: 400, height: 400, top: -100, right: -100, background: 'rgba(37,99,235,0.15)' }} />
+          <div className="about-hero-blob" style={{ width: 300, height: 300, bottom: -80, left: '5%', background: 'rgba(59,130,246,0.08)' }} />
 
           <div className="about-hero-inner">
             <div className="about-hero-eyebrow">
@@ -525,7 +534,7 @@ export default function AboutPage() {
             </div>
 
             <h1>
-              Meet the <span>Developer</span><br />behind PassportAI
+              Meet the <span>Developer</span><br />behind Passportify
             </h1>
 
             <p className="about-hero-sub">
@@ -563,7 +572,7 @@ export default function AboutPage() {
                 Dhaka, Bangladesh
               </div>
               <div className="avatar-available">
-                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#3b82f6', display: 'inline-block' }} />
                 Open to Opportunities
               </div>
             </div>
@@ -609,7 +618,7 @@ export default function AboutPage() {
                 I&apos;m a <strong>passionate full-stack developer</strong> from Bangladesh who loves building practical, AI-powered tools that solve real-world problems. I enjoy turning complex ideas into simple, beautiful, and functional web applications.
               </p>
               <p className="about-bio-text" style={{ marginTop: 14 }}>
-                <strong>PassportAI</strong> was my vision to make passport photo creation <span>fast, affordable, and accessible</span> for everyone — especially in Bangladesh where professional studio charges can be unnecessarily high. This project combines a modern <span>Next.js</span> frontend with a powerful <span>Python FastAPI</span> backend, using cutting-edge AI models for face detection and background removal.
+                <strong>Passportify</strong> was my vision to make passport photo creation <span>fast, affordable, and accessible</span> for everyone — especially in Bangladesh where professional studio charges can be unnecessarily high. This project combines a modern <span>Next.js</span> frontend with a powerful <span>Python FastAPI</span> backend, using cutting-edge AI models for face detection and background removal.
               </p>
               <p className="about-bio-text" style={{ marginTop: 14 }}>
                 I believe technology should be <strong>accessible to everyone</strong>, and I&apos;m always looking for ways to use my skills to make a positive impact in my community and beyond.

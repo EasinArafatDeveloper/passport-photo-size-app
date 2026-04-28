@@ -1,11 +1,26 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "PassportAI - Instant Passport Photo Generator",
-  description:
-    "Generate professional passport photos instantly. AI-powered background removal, face alignment, and high-quality PDF output.",
-  keywords:
-    "passport photo, passport photo generator, AI photo, background removal, online passport photo",
+  title: "Passportify | Free AI Passport Photo Maker & Editor",
+  description: "Create biometric-compliant, professional passport, visa, and ID photos in seconds. Automatic AI background removal, precise face alignment, and instant PDF download. 100% Free.",
+  keywords: "passport photo maker, AI passport photo generator, biometric photo, visa photo editor, free passport photo online, ID photo creator, remove background passport",
+  authors: [{ name: "Easin Arafat", url: "https://passport-size-photo-generate.scaleupweb.xyz/about" }],
+  openGraph: {
+    title: "Passportify | Free AI Passport Photo Maker",
+    description: "Generate professional, biometric-compliant passport and visa photos instantly from your smartphone using AI.",
+    url: "https://passport-size-photo-generate.scaleupweb.xyz",
+    siteName: "Passportify",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Passportify | Free AI Passport Photo Maker",
+    description: "Create biometric-compliant passport photos in seconds with AI. Automatic background removal and face alignment.",
+  },
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }) {
