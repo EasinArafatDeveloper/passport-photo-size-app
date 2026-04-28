@@ -16,6 +16,12 @@ export default function Toast({ type, message }) {
           from { opacity: 0; transform: translateY(16px) scale(0.95); }
           to   { opacity: 1; transform: translateY(0) scale(1); }
         }
+        @media (max-width: 480px) {
+          .toast-wrapper {
+            bottom: 16px; right: 16px; left: 16px;
+          }
+          .toast-box { max-width: 100%; width: 100%; }
+        }
         .toast-box {
           display: flex;
           align-items: flex-start;

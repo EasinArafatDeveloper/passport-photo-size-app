@@ -52,6 +52,13 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
         @media (max-width: 900px) {
           .result-grid { grid-template-columns: 1fr; }
           .result-left { border-right: none !important; border-bottom: 1px solid #e2e8f0; }
+          .result-left, .result-right { padding: 32px 24px; }
+        }
+        @media (max-width: 640px) {
+          .result-left, .result-right { padding: 24px 16px; }
+          .result-title { font-size: 1.5rem; }
+          .result-config-bar { grid-template-columns: 1fr; }
+          .result-header-row { flex-wrap: wrap; }
         }
 
         /* ── LEFT ── */
@@ -69,6 +76,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           align-items: flex-start;
           justify-content: space-between;
           gap: 16px;
+          flex-wrap: wrap;
         }
         .result-status {
           display: inline-flex;
@@ -181,6 +189,7 @@ export default function ResultStep({ previewUrl, downloadUrl, config, onReset })
           display: flex;
           flex-direction: column;
           gap: 4px;
+          min-width: 0;
         }
         .result-config-label {
           font-size: 10px;

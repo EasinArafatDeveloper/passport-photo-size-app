@@ -43,6 +43,12 @@ export default function UploadStep({ onUpload, isLoading, progress }) {
         @media (max-width: 768px) {
           .upload-grid { grid-template-columns: 1fr; }
           .upload-left { border-right: none !important; border-bottom: 1px solid #e2e8f0; }
+          .upload-left, .upload-right { padding: 32px 24px; }
+        }
+        @media (max-width: 640px) {
+          .upload-left, .upload-right { padding: 24px 16px; }
+          .upload-heading { font-size: 1.6rem; }
+          .dropzone-title { font-size: 18px; }
         }
 
         /* LEFT PANEL */

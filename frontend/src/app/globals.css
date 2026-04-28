@@ -31,18 +31,16 @@
 }
 
 /* ── Base ── */
-html {
+html, body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: var(--bg);
   min-height: 100vh;
   overflow-x: hidden;
+  width: 100%;
   line-height: 1.6;
 }
 

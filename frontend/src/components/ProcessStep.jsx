@@ -32,6 +32,11 @@ export default function ProcessStep({ progress }) {
         @media (max-width: 860px) {
           .proc-grid { grid-template-columns: 1fr; }
           .proc-left { border-right: none !important; border-bottom: 1px solid #e2e8f0; }
+          .proc-left, .proc-right { padding: 32px 24px; }
+        }
+        @media (max-width: 640px) {
+          .proc-left, .proc-right { padding: 24px 16px; }
+          .proc-title { font-size: 1.5rem; }
         }
 
         /* ── LEFT ── */

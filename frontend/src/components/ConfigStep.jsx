@@ -31,6 +31,12 @@ export default function ConfigStep({ config, setConfig, sourcePreview, onProcess
         @media (max-width: 900px) {
           .cfg-grid { grid-template-columns: 1fr; }
           .cfg-left  { border-right: none !important; border-bottom: 1px solid #e2e8f0; }
+          .cfg-left, .cfg-right { padding: 32px 24px; }
+        }
+        @media (max-width: 640px) {
+          .cfg-left, .cfg-right { padding: 24px 16px; }
+          .cfg-heading { font-size: 1.5rem; }
+          .cfg-actions { flex-direction: column; }
         }
 
         /* ── LEFT (Preview) ── */

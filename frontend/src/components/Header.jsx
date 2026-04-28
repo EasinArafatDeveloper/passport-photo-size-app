@@ -184,6 +184,7 @@ export default function Header() {
           .nav-login { display: none; }
           .nav-cta { display: none; }
           .nav-hamburger { display: flex; }
+          .nav-inner { padding: 0 16px; }
         }
       `}</style>
 
